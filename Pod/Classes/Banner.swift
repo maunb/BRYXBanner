@@ -138,7 +138,7 @@ open class Banner: UIView {
     open let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
         }()
     
@@ -263,13 +263,15 @@ open class Banner: UIView {
             leftConstraintText = "|"
         } else {
             contentView.addSubview(imageView)
-            contentView.addConstraint(imageView.constraintWithAttribute(.leading, .equal, to: contentView, constant: 15.0))
+            contentView.addConstraint(imageView.constraintWithAttribute(.leading, .equal, to: contentView, constant: 11.0))
             contentView.addConstraint(imageView.constraintWithAttribute(.centerY, .equal, to: contentView))
-            imageView.addConstraint(imageView.constraintWithAttribute(.width, .equal, to: 25.0))
+            imageView.addConstraint(imageView.constraintWithAttribute(.width, .equal, to: 44.0))
             imageView.addConstraint(imageView.constraintWithAttribute(.height, .equal, to: .width))
             leftConstraintText = "[imageView]"
+            imageView.layer.cornerRadius = 22
+            imageView.layer.masksToBounds = true
         }
-        let constraintFormat = "H:\(leftConstraintText)-(15)-[labelView]-(8)-|"
+        let constraintFormat = "H:\(leftConstraintText)-(13)-[labelView]-(8)-|"
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addConstraints(NSLayoutConstraint.defaultConstraintsWithVisualFormat(constraintFormat, views: views))
         contentView.addConstraints(NSLayoutConstraint.defaultConstraintsWithVisualFormat("V:|-(>=1)-[labelView]-(>=1)-|", views: views))
@@ -279,7 +281,7 @@ open class Banner: UIView {
             let constraintFormat = "H:|[label]-(8)-|"
             contentView.addConstraints(NSLayoutConstraint.defaultConstraintsWithVisualFormat(constraintFormat, options: NSLayoutFormatOptions(), metrics: nil, views: ["label": view]))
         }
-        labelView.addConstraints(NSLayoutConstraint.defaultConstraintsWithVisualFormat("V:|-(10)-[titleLabel][detailLabel]-(10)-|", views: views))
+        labelView.addConstraints(NSLayoutConstraint.defaultConstraintsWithVisualFormat("V:|-(8)-[titleLabel][detailLabel]-(8)-|", views: views))
     }
     
     required public init?(coder aDecoder: NSCoder) {
