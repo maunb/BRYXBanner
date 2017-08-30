@@ -126,7 +126,8 @@ open class Banner: UIView {
     open let detailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.lineBreakMode = .byTruncatingTail
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
         }()
